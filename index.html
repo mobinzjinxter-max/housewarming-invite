@@ -212,6 +212,8 @@
   .sched .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 14px;border-radius:10px;
     background:rgba(255,248,236,.07);border:1px solid rgba(232,191,116,.18)}
   .sched b{font:700 18px/1.3 var(--ml-head);color:#fff6e6;text-align:left}
+  .sched .row{flex-wrap:wrap}
+  .sched em{flex-basis:100%;font:400 14px/1.4 var(--ml-body);font-style:normal;color:#f6ecd9;opacity:.75;text-align:left;margin-top:-2px}
   .sched span{font:600 19px/1.2 var(--en);color:#e8bf74;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
   .cd b{font-variant-numeric:lining-nums tabular-nums}
 
@@ -359,7 +361,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
         <div class="lbl">Time</div>
         <div class="sched">
-          <div class="row"><b>പാലുകാച്ചൽ</b><span>9:15 – 10:00 AM</span></div>
+          <div class="row"><b>പാലുകാച്ചൽ</b><span>9:15 – 10:00 AM</span><em>രാവിലെ 9:15-നും 10:00-നും ഇടയിൽ</em></div>
           <div class="row"><b>സ്നേഹവിരുന്ന്</b><span>3:30 – 9:30 PM</span></div>
         </div>
       </div>
@@ -608,7 +610,7 @@ const EVENT = {
     + "&text=" + encodeURIComponent(EVENT.title)
     + "&dates=" + f(EVENT.startISO) + "/" + f(EVENT.endISO)
     + "&location=" + encodeURIComponent(EVENT.pin)
-    + "&details=" + encodeURIComponent("പാലുകാച്ചൽ 9:15 – 10:00 AM\nസ്നേഹവിരുന്ന് 3:30 – 9:30 PM\n\nKoshy & Family");
+    + "&details=" + encodeURIComponent("പാലുകാച്ചൽ: രാവിലെ 9:15-നും 10:00-നും ഇടയിൽ\nസ്നേഹവിരുന്ന് 3:30 – 9:30 PM\n\nKoshy & Family");
 })();
 </script>
 </body>
