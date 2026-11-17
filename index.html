@@ -416,6 +416,7 @@ const EVENT = {
   place:    "20 ഏക്കർ",
   placeSub: "കട്ടപ്പന, ഇടുക്കി",
   mapQuery: "20 Acre, Kattappana, Idukki, Kerala",
+  pin:      "9.7466047,77.1017630",          // exact location of the house
   title:    "കയറിത്താമസം · Housewarming"
 };
 
@@ -431,7 +432,7 @@ const EVENT = {
 
   /* ---- fill details ---- */
   $("dPlace").textContent = EVENT.place;   $("dPlaceSub").textContent = EVENT.placeSub;
-  $("mapBtn").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(EVENT.mapQuery);
+  $("mapBtn").href = "https://www.google.com/maps/dir/?api=1&destination=" + EVENT.pin;   // opens turn-by-turn directions to the pin
 
   /* ---- layout: size the house "scene" to the viewport ---- */
   let box = {w:0,h:0,x:0,y:0};
@@ -606,7 +607,7 @@ const EVENT = {
   $("calBtn").href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
     + "&text=" + encodeURIComponent(EVENT.title)
     + "&dates=" + f(EVENT.startISO) + "/" + f(EVENT.endISO)
-    + "&location=" + encodeURIComponent(EVENT.mapQuery)
+    + "&location=" + encodeURIComponent(EVENT.pin)
     + "&details=" + encodeURIComponent("പാലുകാച്ചൽ 9:15 – 10:00 AM\nസ്നേഹവിരുന്ന് 3:30 – 9:30 PM\n\nKoshy & Family");
 })();
 </script>
