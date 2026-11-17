@@ -36,7 +36,7 @@
   img{display:block;max-width:100%}
 
   /* ---------- HERO STAGE ---------- */
-  #stage{position:relative;height:250vh;background:var(--night)}
+  #stage{position:relative;height:380vh;background:var(--night)}
   .hero-text.settled{transition:none}
   .sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:
       radial-gradient(120% 90% at 50% 110%, #1b3a5c 0%, var(--night) 60%)}
@@ -89,7 +89,14 @@
   .mouse::after{content:"";position:absolute;left:50%;top:6px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:#fff8ec;animation:wheel 1.6s infinite}
   @keyframes wheel{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(10px)}}
 
-  .mid-text{position:absolute;left:0;right:0;top:16vh;padding:0 16px;text-align:center;color:#fff8ec;opacity:0;pointer-events:none}
+  /* inside the house: the interior photo we "walk into" after the door */
+  .interior{position:absolute;inset:0;opacity:0;overflow:hidden;pointer-events:none;background:#efe9df}
+  .interior img{width:100%;height:100%;object-fit:cover;object-position:42% 55%;transform-origin:41% 58%;will-change:transform}
+  .interior::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(30,20,12,.72) 0%,rgba(30,20,12,.3) 26%,transparent 45%),
+               radial-gradient(ellipse at 50% 50%,transparent 60%,rgba(30,20,12,.25) 100%)}
+  .cream{position:absolute;inset:0;background:var(--cream);opacity:0;pointer-events:none}
+  .mid-text{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 9vh);padding:0 16px;text-align:center;color:#fff8ec;opacity:0;pointer-events:none}
   .mid-text h2{font:700 clamp(30px,5vw,64px)/1.25 var(--ml-head);text-shadow:0 4px 28px rgba(0,0,0,.55)}
   .mid-text p{font:italic 500 clamp(16px,1.8vw,22px) var(--en);letter-spacing:.18em;text-transform:uppercase;color:#f3d9a8;margin-top:6px}
 
@@ -168,7 +175,7 @@
   .portrait .vignette{background:
       linear-gradient(to bottom,rgba(6,12,18,.78) 0%,rgba(6,12,18,.35) 24%,transparent 38%),
       linear-gradient(to top,rgba(8,14,10,.85) 0%,rgba(8,14,10,.35) 22%,transparent 36%)}
-  .portrait .mid-text{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 14svh)}
+  .portrait .mid-text{bottom:calc(env(safe-area-inset-bottom,0px) + 10svh)}
   .portrait .status{bottom:calc(env(safe-area-inset-bottom,0px) + 9svh)}
   .skip{top:calc(env(safe-area-inset-top,0px) + 16px);right:calc(env(safe-area-inset-right,0px) + 16px)}
 
@@ -222,7 +229,9 @@
     </div>
 
     <div class="vignette"></div>
+    <div class="interior" id="interior"><img src="assets/interior.jpg" alt="ഞങ്ങളുടെ വീടിന്റെ അകം" decoding="async"></div>
     <div class="doorlight" id="doorlight"></div>
+    <div class="cream" id="cream"></div>
 
     <div class="status" id="status">വീട് ഒരുങ്ങുന്നു… <span class="pct" id="pct">0</span>%<small>Building our home</small></div>
     <button class="skip" id="skip" type="button">Skip ›</button>
@@ -347,6 +356,7 @@ const EVENT = {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const sticky = $("sticky"), cam = $("cam"), tilt = $("tilt"), build = $("build");
   const bp = $("blueprint"), scan = $("scan"), shine = $("shine"), door = $("doorlight"), mid = $("mid");
+  const inside = $("interior"), insideImg = inside.querySelector("img"), cream = $("cream");
   const IMG_W = 1600, IMG_H = 893, DOOR = {x: .584, y: .752};
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
   scrollTo({top:0, behavior:"instant"});         // always start in front of the house
@@ -449,21 +459,28 @@ const EVENT = {
       tx = Math.sin(t/2600)*.4; ty = Math.cos(t/3700)*.22;
     }
     cx += (tx - cx)*.06; cy += (ty - cy)*.06;
-    const calm = 1 - clamp01(p*2.2);              // tilt fades as we walk in
+    const calm = 1 - clamp01(p*3.5);              // tilt fades as we walk in
     if (!reduce) tilt.style.transform =
       `perspective(1800px) rotateY(${cx*7*calm}deg) rotateX(${-cy*4*calm}deg) translate3d(${-cx*14*calm}px,${-cy*8*calm}px,0)`;
 
-    // walk toward the front door
-    const z = ease(clamp01(p/.66));
+    // 1. walk toward the front door
+    const z = ease(clamp01(p/.40));
     cam.style.transform = `scale(${1 + z*3.4})`;
-    document.querySelector(".hero-text").style.opacity = finished ? 1 - clamp01(p*5) : "";
-    const m = clamp01((p-.16)/.12) * (1 - clamp01((p-.42)/.1));
-    mid.style.opacity = m; mid.style.transform = `translateY(${(1-m)*20}px)`;
-    // light pours out of the door and fills the screen
-    const l = ease(clamp01((p-.42)/.4));
+    document.querySelector(".hero-text").style.opacity = finished ? 1 - clamp01(p*6) : "";
+    // 2. warm light pours out of the door and fills the screen…
+    const l = ease(clamp01((p-.22)/.2));
     const reach = Math.hypot(innerWidth, innerHeight) / 20 * 2.3;
     door.style.transform = `scale(${l*reach})`;
-    door.style.opacity = l > 0 ? 1 : 0;
+    door.style.opacity = l > 0 ? 1 - clamp01((p-.44)/.1) : 0;
+    // 3. …and fades to reveal the inside of the house, still walking forward
+    inside.style.opacity = clamp01((p-.40)/.04);
+    const w = ease(clamp01((p-.40)/.48));
+    if (!reduce) insideImg.style.transform =
+      `scale(${1.28 - .28*w}) translate3d(${-cx*10}px,${-cy*6}px,0)`;
+    const m = clamp01((p-.50)/.08) * (1 - clamp01((p-.84)/.06));
+    mid.style.opacity = m; mid.style.transform = `translateY(${(1-m)*20}px)`;
+    // 4. soft fade to the invitation below
+    cream.style.opacity = clamp01((p-.88)/.11);
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
