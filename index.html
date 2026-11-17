@@ -36,7 +36,7 @@
   img{display:block;max-width:100%}
 
   /* ---------- HERO STAGE ---------- */
-  #stage{position:relative;height:310vh;background:var(--night)}
+  #stage{position:relative;height:230vh;background:var(--night)}
   .hero-text.settled{transition:none}
   .sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:
       radial-gradient(120% 90% at 50% 110%, #1b3a5c 0%, var(--night) 60%)}
@@ -207,6 +207,33 @@
     footer h4{font-size:26px}
     footer p{font-size:15px}
   }
+  /* ---------- schedule rows in the time card ---------- */
+  .sched{display:grid;gap:8px;margin-top:12px}
+  .sched .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 14px;border-radius:10px;
+    background:rgba(255,248,236,.07);border:1px solid rgba(232,191,116,.18)}
+  .sched b{font:700 18px/1.3 var(--ml-head);color:#fff6e6;text-align:left}
+  .sched span{font:600 19px/1.2 var(--en);color:#e8bf74;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+  .cd b{font-variant-numeric:lining-nums tabular-nums}
+
+  /* ---------- "Open Invitation" welcome screen (its tap also starts the music) ---------- */
+  html.locked,html.locked body{overflow:hidden}
+  .gate{position:fixed;inset:0;z-index:100;display:grid;place-items:center;text-align:center;color:#fff6e6;
+    padding:max(24px,env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));
+    background:radial-gradient(70% 55% at 50% 42%,rgba(255,190,110,.16),transparent 70%),
+      linear-gradient(rgba(170,225,255,.06) 1px,transparent 1px) 0 0/28px 28px,
+      linear-gradient(90deg,rgba(170,225,255,.06) 1px,transparent 1px) 0 0/28px 28px,
+      radial-gradient(120% 90% at 50% 110%,#1b3a5c 0%,var(--night) 60%);
+    transition:opacity .7s ease,transform .7s ease}
+  .gate.gone{opacity:0;transform:scale(1.04);pointer-events:none}
+  .gate-inner{max-width:420px;display:flex;flex-direction:column;align-items:center}
+  .gate .lamp{width:58px;margin-bottom:16px;filter:drop-shadow(0 0 18px rgba(255,190,110,.45))}
+  .gate .eyebrow{font-size:14px}
+  .gate h2{font:800 clamp(40px,11vw,72px)/1.2 var(--ml-head);margin:.15em 0 .2em;white-space:nowrap}
+  .gate p{font-size:18px;opacity:.85;line-height:1.5}
+  .gate-btn{margin-top:30px;flex-direction:column;gap:2px;padding:16px 34px;font-size:19px}
+  .gate-btn small{font:italic 600 13px var(--en);letter-spacing:.22em;text-transform:uppercase;opacity:.75}
+  .gate-note{margin-top:14px;font-size:13px;opacity:.6;letter-spacing:.04em}
+
   /* ---------- background music toggle ---------- */
   .music{position:fixed;z-index:50;right:calc(env(safe-area-inset-right,0px) + 16px);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);
     display:flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border-radius:99px;cursor:pointer;
@@ -219,6 +246,7 @@
   .music.on .eq i{animation:eq 1.1s ease-in-out infinite}
   .music.on .eq i:nth-child(2){animation-delay:-.35s}.music.on .eq i:nth-child(3){animation-delay:-.7s}.music.on .eq i:nth-child(4){animation-delay:-.2s}
   @keyframes eq{0%,100%{height:25%}50%{height:100%}}
+  @media (max-width:600px){.music.on{padding:12px}.music.on .onl{display:none}}
   .music:not(.on):not(.touched){animation:nudge 2.4s ease-in-out infinite}
   @keyframes nudge{0%,100%{box-shadow:0 0 0 0 rgba(232,191,116,.55)}60%{box-shadow:0 0 0 12px rgba(232,191,116,0)}}
   .music .off{display:none}.music:not(.on) .off{display:inline}.music:not(.on) .onl{display:none}
@@ -233,6 +261,21 @@
 <body>
 
 <!-- ================= HERO: the house builds itself ================= -->
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+  <div class="gate-inner">
+    <svg class="lamp" viewBox="0 0 56 96" aria-hidden="true">
+      <circle cx="28" cy="18" r="16" fill="#ffcf7a" opacity=".22"/>
+      <path class="flame" d="M28 4c4 7 7 11 7 15a7 7 0 0 1-14 0c0-4 3-8 7-15z" fill="url(#fg)"/>
+      <path d="M14 28h28l-4 6H18z M24 34h8v34h-8z M18 68h20l3 8H15z M10 76h36l4 10H6z" fill="#c9973f"/>
+    </svg>
+    <div class="eyebrow">You're invited</div>
+    <h2 id="gateTitle">കയറിത്താമസം</h2>
+    <p>30 ഡിസംബർ 2026 · 20 ഏക്കർ, കട്ടപ്പന</p>
+    <button class="btn primary gate-btn" id="openBtn" type="button">ക്ഷണം തുറക്കുക<small>Open Invitation</small></button>
+    <div class="gate-note">സംഗീതത്തോടെ · with music</div>
+  </div>
+</div>
+
 <section id="stage" aria-label="ഞങ്ങളുടെ പുതിയ വീട്">
   <div class="sticky" id="sticky">
     <div class="backdrop"></div>
@@ -315,8 +358,10 @@
       <div class="card reveal d2">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
         <div class="lbl">Time</div>
-        <div class="big" id="dTime">രാവിലെ 10:00</div>
-        <div class="sub" id="dTimeSub">തുടർന്ന് സ്നേഹവിരുന്ന്</div>
+        <div class="sched">
+          <div class="row"><b>പാലുകാച്ചൽ</b><span>9:15 – 10:00 AM</span></div>
+          <div class="row"><b>സ്നേഹവിരുന്ന്</b><span>3:30 – 9:30 PM</span></div>
+        </div>
       </div>
       <div class="card reveal d3">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
@@ -366,10 +411,8 @@
 <script>
 /* ---------- Edit the event details here ---------- */
 const EVENT = {
-  startISO: "2026-12-30T10:00:00+05:30",   // ചടങ്ങ് തുടങ്ങുന്ന സമയം (IST)
-  endISO:   "2026-12-30T14:00:00+05:30",
-  timeText: "രാവിലെ 10:00",
-  timeSub:  "തുടർന്ന് സ്നേഹവിരുന്ന്",
+  startISO: "2026-12-30T09:15:00+05:30",   // പാലുകാച്ചൽ 9:15 – 10:00 AM (IST)
+  endISO:   "2026-12-30T21:30:00+05:30",   // സ്നേഹവിരുന്ന് 3:30 – 9:30 PM
   place:    "20 ഏക്കർ",
   placeSub: "കട്ടപ്പന, ഇടുക്കി",
   mapQuery: "20 Acre, Kattappana, Idukki, Kerala",
@@ -387,7 +430,6 @@ const EVENT = {
   scrollTo({top:0, behavior:"instant"});         // always start in front of the house
 
   /* ---- fill details ---- */
-  $("dTime").textContent = EVENT.timeText; $("dTimeSub").textContent = EVENT.timeSub;
   $("dPlace").textContent = EVENT.place;   $("dPlaceSub").textContent = EVENT.placeSub;
   $("mapBtn").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(EVENT.mapQuery);
 
@@ -437,7 +479,7 @@ const EVENT = {
 
   function intro(){
     if (reduce){ bp.style.clipPath = "none"; finish(); return; }
-    const BP = 2000, STEP = 115, DUR = 950, START = BP + 150;
+    const BP = 1100, STEP = 60, DUR = 700, START = BP + 50;
     const total = START + (N-1)*STEP + DUR;
     // 1. blueprint is drawn from the ground up
     anims.push(bp.animate([{clipPath:"inset(100% 0 0 0)"},{clipPath:"inset(0% 0 0 0)"}],
@@ -462,7 +504,17 @@ const EVENT = {
     setTimeout(finish, total + 50);
   }
   // start as soon as the blueprint is ready; the photo keeps loading while the lines draw (2 s head start)
-  (bp.decode ? bp.decode() : Promise.resolve()).catch(()=>{}).then(() => setTimeout(intro, 200));
+  // the house starts building the moment the guest taps "Open Invitation" (that tap also starts the music)
+  const ready = (bp.decode ? bp.decode() : Promise.resolve()).catch(()=>{});
+  const gate = $("gate"), openBtn = $("openBtn");
+  document.documentElement.classList.add("locked");
+  openBtn.focus({preventScroll:true});
+  openBtn.addEventListener("click", () => {
+    gate.classList.add("gone");
+    document.documentElement.classList.remove("locked");
+    ready.then(() => setTimeout(intro, 150));
+    setTimeout(() => gate.remove(), 800);
+  }, {once:true});
 
   /* ---- 3D tilt (mouse / phone gyro) + scroll camera ---- */
   let tx = 0, ty = 0, cx = 0, cy = 0, gyro = false;
@@ -555,7 +607,7 @@ const EVENT = {
     + "&text=" + encodeURIComponent(EVENT.title)
     + "&dates=" + f(EVENT.startISO) + "/" + f(EVENT.endISO)
     + "&location=" + encodeURIComponent(EVENT.mapQuery)
-    + "&details=" + encodeURIComponent("ഞങ്ങളുടെ പുതിയ വീടിന്റെ കയറിത്താമസം");
+    + "&details=" + encodeURIComponent("പാലുകാച്ചൽ 9:15 – 10:00 AM\nസ്നേഹവിരുന്ന് 3:30 – 9:30 PM\n\nKoshy & Family");
 })();
 </script>
 </body>
