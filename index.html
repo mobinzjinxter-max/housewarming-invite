@@ -16,6 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://mobinzjinxter-max.github.io/housewarming-invite/assets/share-family-home.jpg">
 <meta name="theme-color" content="#0b1a2c">
+<link rel="preload" as="image" href="assets/garden.jpg">
 <link rel="preload" as="image" href="assets/house.jpg">
 <link rel="preload" as="image" href="assets/house-blueprint.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -227,6 +228,15 @@
       radial-gradient(120% 90% at 50% 110%,#1b3a5c 0%,var(--night) 60%);
     transition:opacity .7s ease,transform .7s ease}
   .gate.gone{opacity:0;transform:scale(1.04);pointer-events:none}
+  /* garden photo behind the welcome screen, tinted so the text stays readable */
+  .gate{isolation:isolate;overflow:hidden;background:var(--night)}
+  .gate::before{content:"";position:absolute;inset:-2%;z-index:-2;background:url(assets/garden.jpg) center 45%/cover no-repeat;
+    filter:saturate(1.1) blur(1.5px);animation:gateZoom 16s ease-out both}
+  .gate::after{content:"";position:absolute;inset:0;z-index:-1;
+    background:radial-gradient(60% 45% at 50% 42%,rgba(255,190,110,.20),transparent 72%),
+      linear-gradient(180deg,rgba(8,18,14,.62) 0%,rgba(8,16,22,.74) 45%,rgba(6,12,20,.9) 100%)}
+  @keyframes gateZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+  @media (prefers-reduced-motion:reduce){.gate::before{animation:none}}
   .gate-inner{max-width:420px;display:flex;flex-direction:column;align-items:center}
   .gate .lamp{width:58px;margin-bottom:16px;filter:drop-shadow(0 0 18px rgba(255,190,110,.45))}
   .gate .eyebrow{font-size:14px}
