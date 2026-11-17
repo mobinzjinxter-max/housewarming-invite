@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>കയറിത്താമസം · Housewarming</title>
+<meta name="description" content="ഞങ്ങളുടെ പുതിയ വീടിന്റെ കയറിത്താമസത്തിലേക്ക് സ്നേഹപൂർവ്വം ക്ഷണിക്കുന്നു · 30 ഡിസംബർ 2026 · 20 ഏക്കർ, കട്ടപ്പന">
+<meta property="og:title" content="കയറിത്താമസം · 30 ഡിസംബർ 2026">
+<meta property="og:description" content="20 ഏക്കർ, കട്ടപ്പന · നിങ്ങളെയും കുടുംബത്തെയും സ്നേഹപൂർവ്വം ക്ഷണിക്കുന്നു">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mobinzjinxter-max.github.io/housewarming-invite/">
+<meta property="og:image" content="https://mobinzjinxter-max.github.io/housewarming-invite/assets/share-family-home.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="838">
+<meta property="og:image:alt" content="Our family in front of our new home">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mobinzjinxter-max.github.io/housewarming-invite/assets/share-family-home.jpg">
+<meta name="theme-color" content="#0b1a2c">
+<link rel="preload" as="image" href="assets/house.jpg">
+<link rel="preload" as="image" href="assets/house-blueprint.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manjari:wght@400;700&family=Noto+Serif+Malayalam:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#0b1a2c; --night2:#12263d; --line:#aae1ff;
+    --cream:#fbf3e4; --cream2:#f4e6cc; --ink:#2a1f17; --muted:#6e5a47;
+    --terra:#b4532a; --teak:#8a5a33; --gold:#c9973f; --leaf:#1f3b2d;
+    --ml-head:"Noto Serif Malayalam", "Manjari", serif;
+    --ml-body:"Manjari", "Noto Serif Malayalam", sans-serif;
+    --en:"Cormorant Garamond", Georgia, serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:var(--ml-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+
+  /* ---------- HERO STAGE ---------- */
+  #stage{position:relative;height:250vh;background:var(--night)}
+  .hero-text.settled{transition:none}
+  .sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:
+      radial-gradient(120% 90% at 50% 110%, #1b3a5c 0%, var(--night) 60%)}
+  .grid{position:absolute;inset:0;opacity:.35;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(170,225,255,.10) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(170,225,255,.10) 1px, transparent 1px),
+      linear-gradient(rgba(170,225,255,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(170,225,255,.05) 1px, transparent 1px);
+    background-size:120px 120px,120px 120px,24px 24px,24px 24px;transition:opacity 1.6s ease}
+  .backdrop{position:absolute;inset:-60px;background:url(assets/house.jpg) center/cover;filter:blur(40px) saturate(1.2) brightness(.75);opacity:0;transition:opacity 1.8s ease}
+  .built .backdrop{opacity:1}
+  .built .grid{opacity:0}
+
+  .cam{position:absolute;will-change:transform;transform-origin:58.4% 75.2%}
+  .tilt{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+  .portrait .cam{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 10%,#000 90%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 10%,#000 90%,transparent 100%)}
+
+  .blueprint{position:absolute;inset:0;width:100%;height:100%;clip-path:inset(100% 0 0 0);filter:drop-shadow(0 0 6px rgba(120,200,255,.55))}
+  .build{position:absolute;inset:0;perspective:1600px;perspective-origin:50% 120%;transform-style:preserve-3d}
+  .strip{position:absolute;inset:0;opacity:0;backface-visibility:hidden}
+  .strip img{width:100%;height:100%;object-fit:cover}
+  .scan{position:absolute;left:0;right:0;height:2px;bottom:0;opacity:0;
+    background:linear-gradient(90deg,transparent,rgba(170,225,255,.9) 15%,#fff 50%,rgba(170,225,255,.9) 85%,transparent);
+    box-shadow:0 0 18px 4px rgba(120,200,255,.6),0 0 60px 10px rgba(120,200,255,.25)}
+  .scan.warm{background:linear-gradient(90deg,transparent,rgba(255,206,140,.9) 15%,#fff6e0 50%,rgba(255,206,140,.9) 85%,transparent);
+    box-shadow:0 0 18px 4px rgba(255,190,110,.65),0 0 70px 14px rgba(255,170,80,.25)}
+  .shine{position:absolute;inset:0;pointer-events:none;opacity:0;mix-blend-mode:soft-light;
+    background:linear-gradient(105deg,transparent 35%,rgba(255,240,210,.85) 50%,transparent 65%);background-size:250% 100%;background-position:120% 0}
+  .vignette{position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse at 50% 45%,transparent 55%,rgba(5,12,22,.55) 100%),
+               linear-gradient(to top,rgba(8,14,10,.82) 0%,rgba(8,14,10,.35) 26%,transparent 46%);
+    opacity:0;transition:opacity 1.4s ease}
+  .built .vignette{opacity:1}
+
+  .status{position:absolute;left:50%;bottom:7vh;transform:translateX(-50%);color:var(--line);
+    font:500 15px/1 var(--ml-body);letter-spacing:.06em;text-align:center;transition:opacity .6s}
+  .status small{display:block;margin-top:8px;font:italic 500 14px var(--en);letter-spacing:.2em;opacity:.7;text-transform:uppercase}
+  .status .pct{font-variant-numeric:tabular-nums}
+  .built .status{opacity:0}
+
+  .hero-text{position:absolute;left:0;right:0;bottom:8vh;padding:0 16px;text-align:center;color:#fff8ec;opacity:0;transform:translateY(24px);
+    transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.2,.8,.2,1)}
+  .built .hero-text{opacity:1;transform:none}
+  .eyebrow{font:italic 500 clamp(15px,1.6vw,20px) var(--en);letter-spacing:.32em;text-transform:uppercase;color:#f3d9a8}
+  .hero-text h1{font:800 clamp(44px,8.5vw,112px)/1.15 var(--ml-head);margin:.12em 0 .1em;text-shadow:0 4px 30px rgba(0,0,0,.45)}
+  .hero-text p{font:400 clamp(17px,2vw,24px) var(--ml-body);opacity:.92}
+  .hint{margin-top:26px;display:inline-flex;flex-direction:column;align-items:center;gap:8px;font-size:14px;opacity:.8}
+  .mouse{width:22px;height:34px;border:2px solid rgba(255,248,236,.8);border-radius:12px;position:relative}
+  .mouse::after{content:"";position:absolute;left:50%;top:6px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:#fff8ec;animation:wheel 1.6s infinite}
+  @keyframes wheel{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(10px)}}
+
+  .mid-text{position:absolute;left:0;right:0;top:16vh;padding:0 16px;text-align:center;color:#fff8ec;opacity:0;pointer-events:none}
+  .mid-text h2{font:700 clamp(30px,5vw,64px)/1.25 var(--ml-head);text-shadow:0 4px 28px rgba(0,0,0,.55)}
+  .mid-text p{font:italic 500 clamp(16px,1.8vw,22px) var(--en);letter-spacing:.18em;text-transform:uppercase;color:#f3d9a8;margin-top:6px}
+
+  .doorlight{position:absolute;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;pointer-events:none;transform:scale(0);
+    background:radial-gradient(circle,#fffaf0 0%,#fbf3e4 38%,rgba(251,243,228,.85) 52%,rgba(255,214,150,.35) 66%,transparent 72%)}
+
+  .skip{position:absolute;right:16px;top:16px;background:rgba(255,255,255,.08);color:var(--line);border:1px solid rgba(170,225,255,.3);
+    border-radius:99px;padding:8px 14px;font:500 13px var(--ml-body);cursor:pointer;backdrop-filter:blur(6px);transition:opacity .5s}
+  .built .skip{opacity:0;pointer-events:none}
+
+  /* ---------- CONTENT ---------- */
+  section.page{position:relative;padding:clamp(72px,11vw,140px) 16px}
+  .wrap{max-width:1120px;margin:0 auto}
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  .lamp{display:block;margin:0 auto 18px;width:56px;height:auto}
+  .flame{transform-origin:28px 22px;animation:flicker 2.4s ease-in-out infinite}
+  @keyframes flicker{0%,100%{transform:scale(1,1) rotate(0)}25%{transform:scale(.94,1.06) rotate(-2deg)}50%{transform:scale(1.04,.96) rotate(1.5deg)}75%{transform:scale(.97,1.04) rotate(-1deg)}}
+
+  .family{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,72px);align-items:center}
+  .frame{position:relative;perspective:1200px}
+  .frame-inner{position:relative;border-radius:6px;padding:12px;background:#fffdf8;
+    box-shadow:0 2px 0 var(--cream2),0 40px 80px -30px rgba(90,50,20,.45),0 12px 24px -12px rgba(90,50,20,.3);
+    transform:rotate(-1.2deg);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+  .frame-inner::before{content:"";position:absolute;inset:-14px;border:1px solid rgba(201,151,63,.45);border-radius:10px;pointer-events:none}
+  .frame-inner img{border-radius:3px;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:50% 30%;
+    clip-path:inset(100% 0 0 0);transition:clip-path 1.6s cubic-bezier(.7,0,.2,1) .2s,transform 2.4s cubic-bezier(.2,.8,.2,1) .2s;transform:scale(1.12)}
+  .reveal.in .frame-inner img{clip-path:inset(0 0 0 0);transform:scale(1)}
+  .frame:hover .frame-inner{transform:rotate(0) translateY(-4px)}
+  .tape{position:absolute;width:110px;height:28px;background:rgba(201,151,63,.28);top:-12px;left:50%;transform:translateX(-50%) rotate(-3deg);backdrop-filter:blur(1px)}
+
+  .kicker{font:italic 500 clamp(15px,1.5vw,19px) var(--en);letter-spacing:.3em;text-transform:uppercase;color:var(--terra)}
+  h3.title{font:800 clamp(34px,4.6vw,58px)/1.25 var(--ml-head);margin:.25em 0 .35em;color:var(--ink)}
+  .invite p{font-size:clamp(18px,1.7vw,21px);line-height:1.85;color:#3d2e22}
+  .invite p+p{margin-top:14px}
+  .sign{margin-top:26px;font:700 20px var(--ml-head);color:var(--teak)}
+  .sign span{display:block;font:italic 500 17px var(--en);letter-spacing:.12em;color:var(--muted);margin-top:2px}
+
+  .details{background:var(--leaf);color:#f6ecd9;overflow:hidden}
+  .details::before{content:"";position:absolute;inset:0;opacity:.12;background:url(assets/house-blueprint.png) center 80%/cover no-repeat;pointer-events:none}
+  .details .kicker{color:#e8bf74;text-align:center;display:block}
+  .details h3.title{color:#fff6e6;text-align:center}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+  .card{position:relative;background:rgba(255,248,236,.06);border:1px solid rgba(232,191,116,.28);border-radius:18px;padding:30px 24px;text-align:center;backdrop-filter:blur(4px)}
+  .card svg{width:34px;height:34px;color:#e8bf74;margin:0 auto 14px;display:block}
+  .card .lbl{font:italic 500 15px var(--en);letter-spacing:.25em;text-transform:uppercase;color:#e8bf74}
+  .card .big{font:700 clamp(24px,2.4vw,30px)/1.35 var(--ml-head);margin:8px 0 4px;color:#fff6e6}
+  .card .sub{font-size:17px;opacity:.85}
+  .reveal.d1{transition-delay:.12s}.reveal.d2{transition-delay:.24s}.reveal.d3{transition-delay:.36s}
+
+  .countdown{display:flex;justify-content:center;gap:clamp(10px,2.5vw,28px);margin-top:54px}
+  .cd{min-width:clamp(68px,10vw,104px);text-align:center}
+  .cd b{display:block;font:600 clamp(38px,5.5vw,68px)/1 var(--en);font-variant-numeric:tabular-nums;color:#fff6e6}
+  .cd span{display:block;margin-top:8px;font-size:15px;opacity:.75}
+  .actions{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:46px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:99px;font:700 17px var(--ml-body);text-decoration:none;cursor:pointer;border:0;transition:transform .2s,box-shadow .2s,background .2s}
+  .btn svg{width:20px;height:20px}
+  .btn.primary{background:#e8bf74;color:#2a1f17;box-shadow:0 10px 30px -10px rgba(232,191,116,.7)}
+  .btn.ghost{background:transparent;color:#fff6e6;border:1px solid rgba(255,246,230,.4)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:focus-visible{outline:3px solid #fff6e6;outline-offset:3px}
+
+  footer{background:var(--cream);text-align:center;padding:clamp(72px,10vw,120px) 16px clamp(56px,8vw,90px)}
+  footer h4{font:700 clamp(26px,3.4vw,40px)/1.4 var(--ml-head);color:var(--ink);max-width:760px;margin:0 auto}
+  footer p{margin-top:14px;font:italic 500 18px var(--en);letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+  .orn{width:160px;height:14px;margin:26px auto 0;color:var(--gold)}
+
+  @media (max-width:860px){
+    .family{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .frame-inner img{clip-path:none;transform:none;transition:none}
+    .flame,.mouse::after{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO: the house builds itself ================= -->
+<section id="stage" aria-label="ഞങ്ങളുടെ പുതിയ വീട്">
+  <div class="sticky" id="sticky">
+    <div class="backdrop"></div>
+    <div class="grid"></div>
+
+    <div class="cam" id="cam">
+      <div class="tilt" id="tilt">
+        <img class="blueprint" id="blueprint" src="assets/house-blueprint.png" alt="">
+        <div class="build" id="build"></div>
+        <div class="scan" id="scan"></div>
+        <div class="shine" id="shine"></div>
+      </div>
+    </div>
+
+    <div class="vignette"></div>
+    <div class="doorlight" id="doorlight"></div>
+
+    <div class="status" id="status">വീട് ഒരുങ്ങുന്നു… <span class="pct" id="pct">0</span>%<small>Building our home</small></div>
+    <button class="skip" id="skip" type="button">Skip ›</button>
+
+    <div class="hero-text">
+      <div class="eyebrow">You're invited · 2026</div>
+      <h1>കയറിത്താമസം</h1>
+      <p>ഞങ്ങളുടെ പുതിയ വീട്ടിലേക്ക് സ്വാഗതം</p>
+      <div class="hint"><span class="mouse"></span>താഴേക്ക് സ്ക്രോൾ ചെയ്യൂ</div>
+    </div>
+
+    <div class="mid-text" id="mid">
+      <h2>വരൂ, അകത്തേക്ക് കയറാം</h2>
+      <p>Welcome home</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAMILY ================= -->
+<section class="page" id="family">
+  <div class="wrap family">
+    <div class="frame reveal">
+      <div class="frame-inner">
+        <span class="tape"></span>
+        <img src="assets/family.jpg" alt="ഞങ്ങളുടെ കുടുംബം" loading="lazy">
+      </div>
+    </div>
+    <div class="invite reveal d2">
+      <svg class="lamp" viewBox="0 0 56 96" aria-hidden="true" style="margin-left:0">
+        <defs><radialGradient id="fg" cx="50%" cy="60%" r="50%"><stop offset="0" stop-color="#fff6c8"/><stop offset=".55" stop-color="#ffb347"/><stop offset="1" stop-color="#e2611c" stop-opacity="0"/></radialGradient></defs>
+        <circle cx="28" cy="18" r="16" fill="#ffcf7a" opacity=".22"/>
+        <path class="flame" d="M28 4c4 7 7 11 7 15a7 7 0 0 1-14 0c0-4 3-8 7-15z" fill="url(#fg)"/>
+        <path d="M14 28h28l-4 6H18z M24 34h8v34h-8z M18 68h20l3 8H15z M10 76h36l4 10H6z" fill="#c9973f"/>
+        <path d="M14 28h28l-4 6H18z" fill="#b5822e"/>
+      </svg>
+      <div class="kicker">With joy in our hearts</div>
+      <h3 class="title">സ്നേഹപൂർവ്വം<br>ക്ഷണിക്കുന്നു</h3>
+      <p>ദൈവകൃപയാൽ ഞങ്ങളുടെ സ്വപ്നഭവനം പൂർത്തിയായിരിക്കുന്നു. ഈ വീട്ടിലെ ആദ്യത്തെ വിളക്ക് തെളിയുന്ന സന്തോഷനിമിഷത്തിൽ പങ്കുചേരാൻ നിങ്ങളെയും കുടുംബത്തെയും ഹൃദയപൂർവ്വം ക്ഷണിക്കുന്നു.</p>
+      <p>നിങ്ങളുടെ സാന്നിധ്യവും പ്രാർത്ഥനയും ഞങ്ങൾക്ക് ഏറ്റവും വലിയ അനുഗ്രഹമായിരിക്കും.</p>
+      <div class="sign" id="signName">സ്നേഹത്തോടെ, ഞങ്ങൾ കുടുംബസമേതം<span>With love, the family</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DETAILS ================= -->
+<section class="page details" id="details">
+  <div class="wrap" style="position:relative">
+    <span class="kicker reveal">Save the date</span>
+    <h3 class="title reveal">ചടങ്ങിന്റെ വിവരങ്ങൾ</h3>
+
+    <div class="cards">
+      <div class="card reveal d1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/><circle cx="12" cy="15" r="1.4" fill="currentColor"/></svg>
+        <div class="lbl">Date</div>
+        <div class="big" id="dDate">ഡിസംബർ 30</div>
+        <div class="sub" id="dDay">2026, ബുധനാഴ്ച</div>
+      </div>
+      <div class="card reveal d2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <div class="lbl">Time</div>
+        <div class="big" id="dTime">രാവിലെ 10:00</div>
+        <div class="sub" id="dTimeSub">തുടർന്ന് സ്നേഹവിരുന്ന്</div>
+      </div>
+      <div class="card reveal d3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <div class="lbl">Venue</div>
+        <div class="big" id="dPlace">20 ഏക്കർ</div>
+        <div class="sub" id="dPlaceSub">കട്ടപ്പന, ഇടുക്കി</div>
+      </div>
+    </div>
+
+    <div class="countdown reveal" id="countdown" aria-live="off">
+      <div class="cd"><b id="cdD">00</b><span>ദിവസം</span></div>
+      <div class="cd"><b id="cdH">00</b><span>മണിക്കൂർ</span></div>
+      <div class="cd"><b id="cdM">00</b><span>മിനിറ്റ്</span></div>
+      <div class="cd"><b id="cdS">00</b><span>സെക്കൻഡ്</span></div>
+    </div>
+
+    <div class="actions reveal">
+      <a class="btn primary" id="mapBtn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        വഴി കാണുക
+      </a>
+      <a class="btn ghost" id="calBtn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M12 13v5M9.5 15.5h5"/></svg>
+        കലണ്ടറിൽ ചേർക്കുക
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <svg class="lamp" viewBox="0 0 56 96" aria-hidden="true">
+    <circle cx="28" cy="18" r="16" fill="#ffcf7a" opacity=".22"/>
+    <path class="flame" d="M28 4c4 7 7 11 7 15a7 7 0 0 1-14 0c0-4 3-8 7-15z" fill="url(#fg)"/>
+    <path d="M14 28h28l-4 6H18z M24 34h8v34h-8z M18 68h20l3 8H15z M10 76h36l4 10H6z" fill="#c9973f"/>
+  </svg>
+  <h4>നിങ്ങളുടെ സാന്നിധ്യം ഞങ്ങളുടെ<br>വീടിനെ വീടാക്കും</h4>
+  <p>See you on 30 December</p>
+  <svg class="orn" viewBox="0 0 160 14" aria-hidden="true"><path d="M0 7h62M98 7h62" stroke="currentColor"/><path d="M80 1l6 6-6 6-6-6z" fill="currentColor"/><circle cx="68" cy="7" r="2" fill="currentColor"/><circle cx="92" cy="7" r="2" fill="currentColor"/></svg>
+</footer>
+
+<script>
+/* ---------- Edit the event details here ---------- */
+const EVENT = {
+  startISO: "2026-12-30T10:00:00+05:30",   // ചടങ്ങ് തുടങ്ങുന്ന സമയം (IST)
+  endISO:   "2026-12-30T14:00:00+05:30",
+  timeText: "രാവിലെ 10:00",
+  timeSub:  "തുടർന്ന് സ്നേഹവിരുന്ന്",
+  place:    "20 ഏക്കർ",
+  placeSub: "കട്ടപ്പന, ഇടുക്കി",
+  mapQuery: "20 Acre, Kattappana, Idukki, Kerala",
+  title:    "കയറിത്താമസം · Housewarming"
+};
+
+(() => {
+  const $ = id => document.getElementById(id);
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const sticky = $("sticky"), cam = $("cam"), tilt = $("tilt"), build = $("build");
+  const bp = $("blueprint"), scan = $("scan"), shine = $("shine"), door = $("doorlight"), mid = $("mid");
+  const IMG_W = 1600, IMG_H = 893, DOOR = {x: .584, y: .752};
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  scrollTo({top:0, behavior:"instant"});         // always start in front of the house
+
+  /* ---- fill details ---- */
+  $("dTime").textContent = EVENT.timeText; $("dTimeSub").textContent = EVENT.timeSub;
+  $("dPlace").textContent = EVENT.place;   $("dPlaceSub").textContent = EVENT.placeSub;
+  $("mapBtn").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(EVENT.mapQuery);
+
+  /* ---- layout: size the house "scene" to the viewport ---- */
+  let box = {w:0,h:0,x:0,y:0};
+  function layout(){
+    const vw = sticky.clientWidth, vh = sticky.clientHeight, ar = IMG_W/IMG_H;
+    const portrait = vw/vh < 1;
+    sticky.classList.toggle("portrait", portrait);
+    let w = portrait ? vw * 1.75 : Math.max(vw, vh*ar);
+    let h = w / ar;
+    let x = vw/2 - w*.58;                       // centre on the house, not the car
+    x = portrait ? x : Math.min(0, Math.max(vw - w, x));
+    let y = portrait ? vh*.5 - h*.56 : (vh - h)/2;
+    box = {w,h,x,y};
+    Object.assign(cam.style,{width:w+"px",height:h+"px",left:x+"px",top:y+"px"});
+    door.style.left = (x + w*DOOR.x) + "px";
+    door.style.top  = (y + h*DOOR.y) + "px";
+  }
+  addEventListener("resize", layout); layout();
+
+  /* ---- build strips (floors rising from the ground) ---- */
+  const N = 18, strips = [];
+  for (let i = 0; i < N; i++){                  // i = 0 is the bottom band
+    const top = 100 - (i+1)*100/N, bot = i*100/N;
+    const s = document.createElement("div");
+    s.className = "strip";
+    s.style.clipPath = `inset(${Math.max(0,top-.12)}% 0 ${Math.max(0,bot-.12)}% 0)`;
+    s.style.transformOrigin = `50% ${100-bot}%`;
+    s.innerHTML = '<img src="assets/house.jpg" alt="">';
+    build.appendChild(s); strips.push(s);
+  }
+
+  let finished = false, anims = [];
+  function finish(){
+    if (finished) return; finished = true;
+    anims.forEach(a => { try{ a.finish(); }catch(e){} });
+    strips.forEach(s => { s.style.opacity = 1; s.style.transform = "none"; });
+    bp.style.opacity = 0; scan.style.opacity = 0;
+    sticky.classList.add("built");
+    setTimeout(() => document.querySelector(".hero-text").classList.add("settled"), 1300);
+    if (!reduce) shine.animate(
+      [{opacity:0, backgroundPosition:"120% 0"},{opacity:1, offset:.3},{opacity:0, backgroundPosition:"-30% 0"}],
+      {duration:1800, easing:"ease-in-out"});
+  }
+  $("skip").addEventListener("click", finish);
+
+  function intro(){
+    if (reduce){ bp.style.clipPath = "none"; finish(); return; }
+    const BP = 2000, STEP = 115, DUR = 950, START = BP + 150;
+    const total = START + (N-1)*STEP + DUR;
+    // 1. blueprint is drawn from the ground up
+    anims.push(bp.animate([{clipPath:"inset(100% 0 0 0)"},{clipPath:"inset(0% 0 0 0)"}],
+      {duration:BP, easing:"cubic-bezier(.45,0,.25,1)", fill:"forwards"}));
+    anims.push(scan.animate([{bottom:"0%",opacity:0},{opacity:1,offset:.08},{opacity:1,offset:.92},{bottom:"100%",opacity:0}],
+      {duration:BP, easing:"cubic-bezier(.45,0,.25,1)", fill:"forwards"}));
+    // 2. the real house is raised band by band
+    strips.forEach((s,i) => anims.push(s.animate([
+      {opacity:0, transform:"translateY(26px) rotateX(78deg) translateZ(-40px)", filter:"brightness(1.9) saturate(.2)"},
+      {opacity:1, offset:.35},
+      {opacity:1, transform:"none", filter:"brightness(1) saturate(1)"}
+    ], {duration:DUR, delay:START + i*STEP, easing:"cubic-bezier(.2,.85,.25,1)", fill:"both"})));
+    setTimeout(() => { scan.classList.add("warm"); }, START - 50);
+    anims.push(scan.animate([{bottom:"0%",opacity:0},{opacity:1,offset:.06},{opacity:1,offset:.9},{bottom:"100%",opacity:0}],
+      {duration:(N-1)*STEP + DUR*.55, delay:START, easing:"linear", fill:"forwards"}));
+    anims.push(bp.animate([{opacity:1},{opacity:.0}], {duration:(N-1)*STEP + DUR, delay:START+300, fill:"forwards"}));
+    // progress readout
+    const t0 = performance.now(), pct = $("pct");
+    (function tick(){ if (finished) return;
+      const p = Math.min(100, Math.round((performance.now()-t0)/total*100));
+      pct.textContent = p; if (p < 100) requestAnimationFrame(tick); })();
+    setTimeout(finish, total + 50);
+  }
+  const pre = new Image(); pre.src = "assets/house.jpg";
+  (pre.decode ? pre.decode() : Promise.resolve()).catch(()=>{}).then(() => setTimeout(intro, 350));
+
+  /* ---- 3D tilt (mouse / phone gyro) + scroll camera ---- */
+  let tx = 0, ty = 0, cx = 0, cy = 0;
+  addEventListener("pointermove", e => { tx = e.clientX/innerWidth - .5; ty = e.clientY/innerHeight - .5; });
+  addEventListener("deviceorientation", e => {
+    if (e.gamma == null) return;
+    tx = Math.max(-.5, Math.min(.5, e.gamma/40)); ty = Math.max(-.5, Math.min(.5, (e.beta-45)/50));
+  });
+  const ease = t => t<.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+  const clamp01 = v => Math.max(0, Math.min(1, v));
+  const stage = $("stage");
+
+  function frame(){
+    const range = stage.offsetHeight - innerHeight;
+    const p = clamp01(-stage.getBoundingClientRect().top / range);
+    cx += (tx - cx)*.06; cy += (ty - cy)*.06;
+    const calm = 1 - clamp01(p*2.2);              // tilt fades as we walk in
+    if (!reduce) tilt.style.transform =
+      `perspective(1800px) rotateY(${cx*7*calm}deg) rotateX(${-cy*4*calm}deg) translate3d(${-cx*14*calm}px,${-cy*8*calm}px,0)`;
+
+    // walk toward the front door
+    const z = ease(clamp01(p/.66));
+    cam.style.transform = `scale(${1 + z*3.4})`;
+    document.querySelector(".hero-text").style.opacity = finished ? 1 - clamp01(p*5) : "";
+    const m = clamp01((p-.16)/.12) * (1 - clamp01((p-.42)/.1));
+    mid.style.opacity = m; mid.style.transform = `translateY(${(1-m)*20}px)`;
+    // light pours out of the door and fills the screen
+    const l = ease(clamp01((p-.42)/.4));
+    const reach = Math.hypot(innerWidth, innerHeight) / 20 * 2.3;
+    door.style.transform = `scale(${l*reach})`;
+    door.style.opacity = l > 0 ? 1 : 0;
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* ---- reveal on scroll ---- */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.18});
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  /* ---- countdown ---- */
+  const target = new Date(EVENT.startISO).getTime(), pad = n => String(n).padStart(2,"0");
+  function count(){
+    let d = Math.max(0, target - Date.now())/1000;
+    $("cdD").textContent = Math.floor(d/86400); d %= 86400;
+    $("cdH").textContent = pad(Math.floor(d/3600)); d %= 3600;
+    $("cdM").textContent = pad(Math.floor(d/60));
+    $("cdS").textContent = pad(Math.floor(d%60));
+  }
+  count(); setInterval(count, 1000);
+
+  /* ---- add to calendar (Google Calendar link) ---- */
+  const f = iso => new Date(iso).toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"");
+  $("calBtn").href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
+    + "&text=" + encodeURIComponent(EVENT.title)
+    + "&dates=" + f(EVENT.startISO) + "/" + f(EVENT.endISO)
+    + "&location=" + encodeURIComponent(EVENT.mapQuery)
+    + "&details=" + encodeURIComponent("ഞങ്ങളുടെ പുതിയ വീടിന്റെ കയറിത്താമസം");
+})();
+</script>
+</body>
+</html>
