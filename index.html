@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="ml">
+<html lang="ml" translate="no">
 <head>
 <meta charset="utf-8">
+<meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>കയറിത്താമസം · Housewarming</title>
 <meta name="description" content="ഞങ്ങളുടെ പുതിയ വീടിന്റെ കയറിത്താമസത്തിലേക്ക് സ്നേഹപൂർവ്വം ക്ഷണിക്കുന്നു · 30 ഡിസംബർ 2026 · 20 ഏക്കർ, കട്ടപ്പന">
@@ -21,7 +22,7 @@
 <link rel="preload" as="image" href="assets/house-blueprint.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manjari:wght@400;700&family=Noto+Serif+Malayalam:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manjari:wght@400;700&family=Noto+Serif+Malayalam:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --night:#0b1a2c; --night2:#12263d; --line:#aae1ff;
@@ -208,6 +209,19 @@
     footer h4{font-size:26px}
     footer p{font-size:15px}
   }
+  /* ---------- language switch ---------- */
+  .lang{position:fixed;z-index:120;left:calc(env(safe-area-inset-left,0px) + 16px);top:calc(env(safe-area-inset-top,0px) + 16px);
+    padding:8px 14px;border-radius:99px;cursor:pointer;font:700 13px/1 var(--ml-body);letter-spacing:.02em;
+    color:#fff6e6;background:rgba(24,18,12,.5);border:1px solid rgba(232,191,116,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  .lang:hover{background:rgba(24,18,12,.7)}
+  .lang:focus-visible{outline:3px solid #e8bf74;outline-offset:3px}
+  /* English mode: Latin display face for headings, no duplicate English sub-lines */
+  html[lang="en"]{--ml-head:"Cormorant Garamond", Georgia, serif}
+  html[lang="en"] .hero-text h1,html[lang="en"] .gate h2{font-weight:700;letter-spacing:.01em}
+  html[lang="en"] .sign span,html[lang="en"] .contact b i{display:none}
+  html[lang="en"] h3.title,html[lang="en"] .mid-text h2,html[lang="en"] footer h4{font-weight:700}
+  html[lang="en"] .sched b{font-size:17px}
+
   /* ---------- tap-to-call contacts ---------- */
   .contacts{margin-top:34px;text-align:center}
   .contact-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:600px;margin:14px auto 0}
@@ -296,10 +310,10 @@
       <path d="M14 28h28l-4 6H18z M24 34h8v34h-8z M18 68h20l3 8H15z M10 76h36l4 10H6z" fill="#c9973f"/>
     </svg>
     <div class="eyebrow">You're invited</div>
-    <h2 id="gateTitle">കയറിത്താമസം</h2>
-    <p>30 ഡിസംബർ 2026 · 20 ഏക്കർ, കട്ടപ്പന</p>
-    <button class="btn primary gate-btn" id="openBtn" type="button">ക്ഷണം തുറക്കുക<small>Open Invitation</small></button>
-    <div class="gate-note">സംഗീതത്തോടെ · with music</div>
+    <h2 id="gateTitle" data-en="House Warming">കയറിത്താമസം</h2>
+    <p data-en="30 December 2026 · 20 Acre, Kattappana">30 ഡിസംബർ 2026 · 20 ഏക്കർ, കട്ടപ്പന</p>
+    <button class="btn primary gate-btn" id="openBtn" type="button"><span data-en="Open Invitation">ക്ഷണം തുറക്കുക</span><small data-en="Tap to begin">Open Invitation</small></button>
+    <div class="gate-note" data-en="with music">സംഗീതത്തോടെ · with music</div>
   </div>
 </div>
 
@@ -322,22 +336,22 @@
     <div class="doorlight" id="doorlight"></div>
     <div class="cream" id="cream"></div>
 
-    <div class="status" id="status">വീട് ഒരുങ്ങുന്നു… <span class="pct" id="pct">0</span>%<small>Building our home</small></div>
+    <div class="status" id="status"><span data-en="Building our home…">വീട് ഒരുങ്ങുന്നു…</span> <span class="pct" id="pct">0</span>%<small data-en="">Building our home</small></div>
     <button class="skip" id="skip" type="button">Skip ›</button>
 
     <div class="hero-text">
       <div class="ht-top">
         <div class="eyebrow">You're invited · 2026</div>
-        <h1>കയറിത്താമസം</h1>
+        <h1 data-en="House Warming">കയറിത്താമസം</h1>
       </div>
       <div class="ht-bottom">
-        <p>ഞങ്ങളുടെ പുതിയ വീട്ടിലേക്ക് സ്വാഗതം</p>
-        <div class="hint"><span class="mouse"></span>താഴേക്ക് സ്ക്രോൾ ചെയ്യൂ</div>
+        <p data-en="Welcome to our new home">ഞങ്ങളുടെ പുതിയ വീട്ടിലേക്ക് സ്വാഗതം</p>
+        <div class="hint"><span class="mouse"></span><span data-en="Scroll down">താഴേക്ക് സ്ക്രോൾ ചെയ്യൂ</span></div>
       </div>
     </div>
 
     <div class="mid-text" id="mid">
-      <h2>വരൂ, അകത്തേക്ക് കയറാം</h2>
+      <h2 data-en="Come, step inside">വരൂ, അകത്തേക്ക് കയറാം</h2>
       <p>Welcome home</p>
     </div>
   </div>
@@ -361,10 +375,10 @@
         <path d="M14 28h28l-4 6H18z" fill="#b5822e"/>
       </svg>
       <div class="kicker">With joy in our hearts</div>
-      <h3 class="title">സ്നേഹപൂർവ്വം<br>ക്ഷണിക്കുന്നു</h3>
-      <p>ദൈവകൃപയാൽ ഞങ്ങളുടെ സ്വപ്നഭവനം പൂർത്തിയായിരിക്കുന്നു. ഈ വീട്ടിലെ ആദ്യത്തെ വിളക്ക് തെളിയുന്ന സന്തോഷനിമിഷത്തിൽ പങ്കുചേരാൻ നിങ്ങളെയും കുടുംബത്തെയും ഹൃദയപൂർവ്വം ക്ഷണിക്കുന്നു.</p>
-      <p>നിങ്ങളുടെ സാന്നിധ്യവും പ്രാർത്ഥനയും ഞങ്ങൾക്ക് ഏറ്റവും വലിയ അനുഗ്രഹമായിരിക്കും.</p>
-      <div class="sign" id="signName">സ്നേഹത്തോടെ,<br>കോശിയും കുടുംബവും<span>With love, Koshy &amp; Family</span></div>
+      <h3 class="title" data-en="With love,<br>we invite you">സ്നേഹപൂർവ്വം<br>ക്ഷണിക്കുന്നു</h3>
+      <p data-en="By God’s grace, our dream home is complete. We warmly invite you and your family to share the joy of lighting the very first lamp in our new home.">ദൈവകൃപയാൽ ഞങ്ങളുടെ സ്വപ്നഭവനം പൂർത്തിയായിരിക്കുന്നു. ഈ വീട്ടിലെ ആദ്യത്തെ വിളക്ക് തെളിയുന്ന സന്തോഷനിമിഷത്തിൽ പങ്കുചേരാൻ നിങ്ങളെയും കുടുംബത്തെയും ഹൃദയപൂർവ്വം ക്ഷണിക്കുന്നു.</p>
+      <p data-en="Your presence and prayers will be our greatest blessing.">നിങ്ങളുടെ സാന്നിധ്യവും പ്രാർത്ഥനയും ഞങ്ങൾക്ക് ഏറ്റവും വലിയ അനുഗ്രഹമായിരിക്കും.</p>
+      <div class="sign" id="signName" data-en="With love,<br>Koshy &amp; Family">സ്നേഹത്തോടെ,<br>കോശിയും കുടുംബവും<span>With love, Koshy &amp; Family</span></div>
     </div>
   </div>
 </section>
@@ -373,46 +387,46 @@
 <section class="page details" id="details">
   <div class="wrap" style="position:relative">
     <span class="kicker reveal">Save the date</span>
-    <h3 class="title reveal">ചടങ്ങിന്റെ വിവരങ്ങൾ</h3>
+    <h3 class="title reveal" data-en="Ceremony Details">ചടങ്ങിന്റെ വിവരങ്ങൾ</h3>
 
     <div class="cards">
       <div class="card reveal d1">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/><circle cx="12" cy="15" r="1.4" fill="currentColor"/></svg>
         <div class="lbl">Date</div>
-        <div class="big" id="dDate">ഡിസംബർ 30</div>
-        <div class="sub" id="dDay">2026, ബുധനാഴ്ച</div>
+        <div class="big" id="dDate" data-en="30 December">ഡിസംബർ 30</div>
+        <div class="sub" id="dDay" data-en="Wednesday, 2026">2026, ബുധനാഴ്ച</div>
       </div>
       <div class="card reveal d2">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
         <div class="lbl">Time</div>
         <div class="sched">
-          <div class="row"><b>പാലുകാച്ചലും<br>വീട് കൂദാശയും</b><span>9:15 – 10:00 AM</span><em>രാവിലെ 9:15-നും 10:00-നും ഇടയിൽ</em></div>
-          <div class="row"><b>സ്നേഹവിരുന്ന്</b><span>3:30 – 9:30 PM</span></div>
+          <div class="row"><b data-en="Milk-Boiling Ceremony<br>&amp; House Blessing">പാലുകാച്ചലും<br>വീട് കൂദാശയും</b><span>9:15 – 10:00 AM</span><em data-en="Between 9:15 and 10:00 in the morning">രാവിലെ 9:15-നും 10:00-നും ഇടയിൽ</em></div>
+          <div class="row"><b data-en="Reception &amp; Feast">സ്നേഹവിരുന്ന്</b><span>3:30 – 9:30 PM</span></div>
         </div>
       </div>
       <div class="card reveal d3">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
         <div class="lbl">Venue</div>
-        <div class="big" id="dPlace">20 ഏക്കർ</div>
-        <div class="sub" id="dPlaceSub">കട്ടപ്പന, ഇടുക്കി</div>
+        <div class="big" id="dPlace" data-en="20 Acre">20 ഏക്കർ</div>
+        <div class="sub" id="dPlaceSub" data-en="Kattappana, Idukki">കട്ടപ്പന, ഇടുക്കി</div>
       </div>
     </div>
 
     <div class="countdown reveal" id="countdown" aria-live="off">
-      <div class="cd"><b id="cdD">00</b><span>ദിവസം</span></div>
-      <div class="cd"><b id="cdH">00</b><span>മണിക്കൂർ</span></div>
-      <div class="cd"><b id="cdM">00</b><span>മിനിറ്റ്</span></div>
-      <div class="cd"><b id="cdS">00</b><span>സെക്കൻഡ്</span></div>
+      <div class="cd"><b id="cdD">00</b><span data-en="Days">ദിവസം</span></div>
+      <div class="cd"><b id="cdH">00</b><span data-en="Hours">മണിക്കൂർ</span></div>
+      <div class="cd"><b id="cdM">00</b><span data-en="Minutes">മിനിറ്റ്</span></div>
+      <div class="cd"><b id="cdS">00</b><span data-en="Seconds">സെക്കൻഡ്</span></div>
     </div>
 
     <div class="actions reveal">
       <a class="btn primary" id="mapBtn" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-        വഴി കാണുക
+        <span data-en="Get Directions">വഴി കാണുക</span>
       </a>
       <a class="btn ghost" id="calBtn" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M12 13v5M9.5 15.5h5"/></svg>
-        കലണ്ടറിൽ ചേർക്കുക
+        <span data-en="Add to Calendar">കലണ്ടറിൽ ചേർക്കുക</span>
       </a>
     </div>
 
@@ -421,11 +435,11 @@
       <div class="contact-row">
         <a class="contact" href="tel:+919447194964" aria-label="Call Koshy, 94471 94964">
           <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></span>
-          <span class="ct"><b>കോശി <i>Koshy</i></b><small><span class="cc">+91 </span>94471 94964</small></span>
+          <span class="ct"><b data-en="Koshy">കോശി <i>Koshy</i></b><small><span class="cc">+91 </span>94471 94964</small></span>
         </a>
         <a class="contact" href="tel:+916282397403" aria-label="Call Mobin, 62823 97403">
           <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></span>
-          <span class="ct"><b>മോബിൻ <i>Mobin</i></b><small><span class="cc">+91 </span>62823 97403</small></span>
+          <span class="ct"><b data-en="Mobin">മോബിൻ <i>Mobin</i></b><small><span class="cc">+91 </span>62823 97403</small></span>
         </a>
       </div>
     </div>
@@ -438,15 +452,16 @@
     <path class="flame" d="M28 4c4 7 7 11 7 15a7 7 0 0 1-14 0c0-4 3-8 7-15z" fill="url(#fg)"/>
     <path d="M14 28h28l-4 6H18z M24 34h8v34h-8z M18 68h20l3 8H15z M10 76h36l4 10H6z" fill="#c9973f"/>
   </svg>
-  <h4>നിങ്ങളുടെ സാന്നിധ്യം ഞങ്ങളുടെ<br>വീടിനെ വീടാക്കും</h4>
+  <h4 data-en="Your presence will turn our<br>house into a home">നിങ്ങളുടെ സാന്നിധ്യം ഞങ്ങളുടെ<br>വീടിനെ വീടാക്കും</h4>
   <p>See you on 30 December</p>
   <svg class="orn" viewBox="0 0 160 14" aria-hidden="true"><path d="M0 7h62M98 7h62" stroke="currentColor"/><path d="M80 1l6 6-6 6-6-6z" fill="currentColor"/><circle cx="68" cy="7" r="2" fill="currentColor"/><circle cx="92" cy="7" r="2" fill="currentColor"/></svg>
 </footer>
 
+<button class="lang" id="langBtn" type="button" aria-label="Read in English">English</button>
 <audio id="bgm" src="assets/music.mp3?v=piano" loop preload="auto"></audio>
 <button class="music" id="musicBtn" type="button" aria-pressed="false" aria-label="Play background music">
   <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-  <span class="off">സംഗീതം ▶</span><span class="onl">സംഗീതം ❚❚</span>
+  <span class="off" data-en="Music ▶">സംഗീതം ▶</span><span class="onl" data-en="Music ❚❚">സംഗീതം ❚❚</span>
 </button>
 
 <script>
@@ -619,7 +634,7 @@ const EVENT = {
   function pause(){ setUI(false); fadeTo(0, 600, () => bgm.pause()); }
   mBtn.addEventListener("click", e => { e.stopPropagation(); mBtn.classList.add("touched");
     wanted = bgm.paused || !mBtn.classList.contains("on"); wanted ? play() : pause(); });
-  const firstGesture = e => { if (mBtn.contains(e.target)) return;             // the button handles its own taps
+  const firstGesture = e => { if (mBtn.contains(e.target) || e.target.id === "langBtn") return;   // these buttons handle their own taps
     ["pointerdown","touchend","keydown","click"].forEach(t => removeEventListener(t, firstGesture, true));
     if (wanted && bgm.paused) play(); };
   ["pointerdown","touchend","keydown","click"].forEach(t => addEventListener(t, firstGesture, true));
@@ -645,11 +660,39 @@ const EVENT = {
 
   /* ---- add to calendar (Google Calendar link) ---- */
   const f = iso => new Date(iso).toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"");
-  $("calBtn").href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
-    + "&text=" + encodeURIComponent(EVENT.title)
+  const CAL = {
+    ml: { title: EVENT.title,
+          details: "പാലുകാച്ചലും വീട് കൂദാശയും: രാവിലെ 9:15-നും 10:00-നും ഇടയിൽ\nസ്നേഹവിരുന്ന് 3:30 – 9:30 PM\n\nKoshy & Family" },
+    en: { title: "House Warming · Koshy & Family",
+          details: "Milk-Boiling Ceremony & House Blessing: between 9:15 and 10:00 AM\nReception & Feast: 3:30 – 9:30 PM\n\nKoshy & Family" }
+  };
+  function setCal(lang){
+    const c = CAL[lang];
+    $("calBtn").href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
+    + "&text=" + encodeURIComponent(c.title)
     + "&dates=" + f(EVENT.startISO) + "/" + f(EVENT.endISO)
     + "&location=" + encodeURIComponent(EVENT.pin)
-    + "&details=" + encodeURIComponent("പാലുകാച്ചലും വീട് കൂദാശയും: രാവിലെ 9:15-നും 10:00-നും ഇടയിൽ\nസ്നേഹവിരുന്ന് 3:30 – 9:30 PM\n\nKoshy & Family");
+    + "&details=" + encodeURIComponent(c.details);
+  }
+
+  /* ---- English / Malayalam switch (our own wording; browser translation is turned off) ---- */
+  const langBtn = $("langBtn"), texts = [...document.querySelectorAll("[data-en]")];
+  texts.forEach(el => el.dataset.ml = el.innerHTML);
+  function setLang(lang){
+    texts.forEach(el => el.innerHTML = lang === "en" ? el.dataset.en : el.dataset.ml);
+    document.documentElement.lang = lang;
+    document.title = lang === "en" ? "House Warming · Koshy & Family" : "കയറിത്താമസം · Housewarming";
+    langBtn.textContent = lang === "en" ? "മലയാളം" : "English";
+    langBtn.setAttribute("aria-label", lang === "en" ? "മലയാളത്തിൽ വായിക്കുക" : "Read in English");
+    setCal(lang);
+    try { localStorage.setItem("invite-lang", lang); } catch(e) {}
+  }
+  langBtn.addEventListener("click", e => { e.stopPropagation(); setLang(document.documentElement.lang === "en" ? "ml" : "en"); });
+  let startLang = "ml";
+  try { startLang = localStorage.getItem("invite-lang") || "ml"; } catch(e) {}
+  const q = new URLSearchParams(location.search).get("lang");
+  if (q === "en" || q === "ml") startLang = q;                 // share ?lang=en for an English-first link
+  setLang(startLang);
 })();
 </script>
 </body>
